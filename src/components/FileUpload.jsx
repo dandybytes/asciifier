@@ -1,27 +1,42 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import PropTypes from "prop-types";
+import {Context} from "../context/Context";
 import "./FileUpload.scss";
 
 const FileUpload = () => {
-    const handleFileHover = event => {
+    const {setUploadedImage} = useContext(Context);
+    const [dropAreaHovered, setDropAreaHovered] = useState(false);
+
+    const handleHover = event => {
         event.preventDefault();
-        event.target.className =
-            event.type === "dragover" ? "file-upload-drop-area hover" : "file-upload-drop-area";
+        if (event.type === "dragover") setDropAreaHovered(true);
+        if (event.type === "dragleave") setDropAreaHovered(false);
+        if (event.type === "mouseleave") setDropAreaHovered(false);
     };
 
     const handleFileSelect = event => {
-        handleFileHover(event);
+        event.preventDefault();
 
-        const inputFile = event.target.files[0] || event.dataTransfer.files[0];
+        setDropAreaHovered(false);
 
-        console.log("input file: ", inputFile);
+        let inputFile;
+        // if file submitted via input
+        if (event.target.files) {
+            inputFile = event.target.files[0];
+            // if file submitted via drag-and-drop
+        } else if (event.dataTransfer) {
+            inputFile = event.dataTransfer.files[0];
+        }
+
+        // console.log("input file: ", inputFile);
 
         const fileReader = new FileReader();
         fileReader.onload = event => {
             const image = new Image();
             image.onload = () => {
-                console.log("image width: ", image.width);
-                console.log("image height: ", image.height);
+                setUploadedImage(image);
+                // console.log("image width: ", image.width);
+                // console.log("image height: ", image.height);
             };
             image.src = event.target.result;
         };
@@ -47,9 +62,11 @@ const FileUpload = () => {
                 </div>
 
                 <div
-                    className="file-upload-drop-area"
-                    onDragOver={handleFileHover}
+                    className={`file-upload-drop-area${dropAreaHovered ? " hovered" : ""}`}
                     onDrop={handleFileSelect}
+                    onDragOver={handleHover}
+                    onDragLeave={handleHover}
+                    // onMouseLeave={handleHover}
                 >
                     ...or drag and drop file here
                 </div>
