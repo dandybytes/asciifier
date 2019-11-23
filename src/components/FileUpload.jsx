@@ -1,5 +1,4 @@
 import React, {useContext, useState} from "react";
-import PropTypes from "prop-types";
 import {Context} from "../context/Context";
 import "./FileUpload.scss";
 
@@ -16,32 +15,31 @@ const FileUpload = () => {
 
     const handleFileSelect = event => {
         event.preventDefault();
-
         setDropAreaHovered(false);
-
         let inputFile;
-        // if file submitted via input
-        if (event.target.files) {
-            inputFile = event.target.files[0];
-            // if file submitted via drag-and-drop
-        } else if (event.dataTransfer) {
-            inputFile = event.dataTransfer.files[0];
-        }
 
-        // console.log("input file: ", inputFile);
+        try {
+            // if file submitted via input
+            if (event.target.files) {
+                inputFile = event.target.files[0];
+                // if file submitted via drag-and-drop
+            } else if (event.dataTransfer) {
+                inputFile = event.dataTransfer.files[0];
+            }
 
-        const fileReader = new FileReader();
-        fileReader.onload = event => {
-            const image = new Image();
-            image.onload = () => {
-                setUploadedImage(image);
-                // console.log("image width: ", image.width);
-                // console.log("image height: ", image.height);
+            const fileReader = new FileReader();
+            fileReader.onload = event => {
+                const image = new Image();
+                image.onload = () => {
+                    setUploadedImage(image);
+                };
+                image.src = event.target.result;
             };
-            image.src = event.target.result;
-        };
 
-        fileReader.readAsDataURL(inputFile);
+            fileReader.readAsDataURL(inputFile);
+        } catch (error) {
+            console.error("ERROR: file upload failed: ", error);
+        }
     };
 
     return (
@@ -74,9 +72,5 @@ const FileUpload = () => {
         </form>
     );
 };
-
-FileUpload.propTypes = {};
-
-FileUpload.defaultProps = {};
 
 export default FileUpload;
