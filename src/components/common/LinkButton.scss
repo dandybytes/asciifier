@@ -1,0 +1,64 @@
+@import "../../variables.scss";
+
+.link-button {
+    // max-width: 15rem;
+    margin: 1.5rem auto;
+    justify-self: center;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+    // letter-spacing: 0.2rem;
+    word-spacing: 0.2rem;
+    outline-offset: 4px;
+    outline-width: 2px;
+    outline-style: solid;
+    border: none;
+    transition: 0.2s all ease-in-out;
+    @media only screen and (min-width: $breakMedium) {
+        margin: 2rem 0;
+    }
+
+    &.regular {
+        outline-color: $lightColor;
+        background-color: $lightColor;
+        color: $darkColor;
+
+        &:hover,
+        &:active {
+            outline-color: $accentColor;
+            background-color: $accentColor;
+            color: $lightColor;
+        }
+
+        &:active {
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            outline: none;
+        }
+    }
+
+    &.inverted {
+        outline-color: $darkColor;
+        background-color: $darkColor;
+        color: $lightColor;
+
+        &:hover,
+        &:active {
+            outline-color: $accentColor;
+            background-color: $accentColor;
+            color: $lightColor;
+        }
+
+        &:active {
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            outline: none;
+        }
+    }
+
+    span,
+    .icon {
+        margin: 0 0.25rem;
+    }
+}
