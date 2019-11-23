@@ -1,37 +1,43 @@
 import React, {useContext, useRef, useEffect} from "react";
 import {Context} from "../context/Context";
-// import PropTypes from "prop-types";
-import {mapImageDataToGrayscale} from "../utils/utils";
+import {getCappedDimensions, mapImageDataToGrayscale} from "../utils/utils";
 
 const Canvas = () => {
-    const {uploadedImage, setGrayscalePixels, setImageWidth, setImageHeight} = useContext(Context);
+    const {
+        uploadedImage,
+        fontRatio,
+        maxSide,
+        setOutputWidth,
+        setOutputHeight,
+        setGrayscalePixelMap
+    } = useContext(Context);
 
     const canvasRef = useRef(null);
 
     useEffect(() => {
         if (uploadedImage !== null) {
-            const width = uploadedImage.width;
-            const height = uploadedImage.height;
-            setImageWidth(width);
-            setImageHeight(height);
-            canvasRef.current.width = width;
-            canvasRef.current.height = height;
+            const imageWidth = uploadedImage.width;
+            const imageHeight = uploadedImage.height;
+            const [outputWidth, outputHeight] = getCappedDimensions(
+                imageWidth,
+                imageHeight,
+                fontRatio,
+                maxSide
+            );
+            setOutputWidth(outputWidth);
+            setOutputHeight(outputHeight);
+            canvasRef.current.width = outputWidth;
+            canvasRef.current.height = outputHeight;
             const canvasContext = canvasRef.current.getContext("2d");
-            canvasContext.drawImage(uploadedImage, 0, 0);
-            const imageData = canvasContext.getImageData(0, 0, width, height);
+            canvasContext.drawImage(uploadedImage, 0, 0, outputWidth, outputHeight);
+            const imageData = canvasContext.getImageData(0, 0, outputWidth, outputHeight);
             const grayscalePixelList = mapImageDataToGrayscale(imageData);
-            canvasContext.putImageData(imageData, 0, 0);
-            setGrayscalePixels(grayscalePixelList);
+            setGrayscalePixelMap(grayscalePixelList);
         }
     }, [uploadedImage]);
 
-    return <canvas ref={canvasRef} className="canvas"></canvas>;
+    // the canvas is required only for image processing => display=none
+    return <canvas ref={canvasRef} className="canvas" style={{display: "none"}}></canvas>;
 };
-
-// Canvas.propTypes = {
-//     uploadedImage: PropTypes.element.isRequired
-// };
-
-// Canvas.defaultProps = {};
 
 export default Canvas;
