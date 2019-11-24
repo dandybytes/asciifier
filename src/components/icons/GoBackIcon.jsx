@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const GoBackIcon = ({size, fill, stroke}) => {
     return (
         <svg
-            className="icon cart-icon"
+            className="icon back-icon"
             height={size}
             width={size}
             fill={fill}
@@ -26,9 +26,9 @@ const GoBackIcon = ({size, fill, stroke}) => {
 };
 
 GoBackIcon.propTypes = {
-    color: PropTypes.string,
+    fill: PropTypes.string,
     size: PropTypes.number,
-    style: PropTypes.object
+    stroke: PropTypes.object
 };
 
 GoBackIcon.defaultProps = {
