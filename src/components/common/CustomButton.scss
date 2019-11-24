@@ -1,0 +1,63 @@
+@import "../../variables.scss";
+
+.custom-button {
+    width: auto;
+    height: 2.5rem;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 7rem;
+    border: none;
+    margin: 1rem 1rem 2rem;
+    padding: 0 1rem;
+    background-color: $mainColor;
+    color: $lightColor;
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    @media (min-width: $breakMedium) {
+        font-size: 1rem;
+        min-width: 13rem;
+    }
+
+    &:hover,
+    &:active {
+        background-color: $accentColorOverlay-1;
+        // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+        color: $lightColor;
+        font-weight: 400;
+    }
+
+    &:active {
+        box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+        outline: none;
+    }
+
+    &.inverted {
+        border: 1px solid $darkColor;
+        background-color: $lightColor;
+        color: $darkColor;
+
+        &:hover,
+        &:active {
+            border: none;
+            background-color: $accentColorOverlay-1;
+            // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            color: $lightColor;
+            font-weight: 400;
+        }
+
+        &:active {
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            outline: none;
+        }
+    }
+
+    span,
+    .icon {
+        margin: 0 0.25rem;
+    }
+}
