@@ -1,18 +1,38 @@
-import React from "react";
-import Title from "./../common/Title";
-import FileUpload from "./../FileUpload";
-import Canvas from "./../Canvas";
-import Output from "./../Output";
-// import "./ImagePage.scss";
+import React, {useContext} from "react";
+import {Context} from "../../context/Context";
+import Menu from "../common/Menu";
+import FileUpload from "../FileUpload";
+import Canvas from "../Canvas";
+import Output from "../Output";
+import CustomButton from "../common/CustomButton";
+import Benchmark from "../Benchmark";
+import "./ImagePage.scss";
 
 const ImagePage = () => {
+    let {uploadedImage, setUploadedImage, setGrayscalePixelMap} = useContext(Context);
+
     return (
         <div className="image-page">
-            <Title text="Image page." center></Title>
-            <h1>ASCII</h1>
-            <FileUpload />
-            <Canvas />
-            <Output />
+            <Menu />
+            <Benchmark />
+            <main>
+                {uploadedImage === null ? (
+                    <FileUpload />
+                ) : (
+                    <>
+                        <CustomButton
+                            onClick={() => {
+                                setUploadedImage(null);
+                                setGrayscalePixelMap("");
+                            }}
+                        >
+                            Upload new Image
+                        </CustomButton>
+                    </>
+                )}
+                <Canvas />
+                <Output />
+            </main>
         </div>
     );
 };

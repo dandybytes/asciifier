@@ -1,10 +1,14 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useRef} from "react";
 import {Context} from "../context/Context";
+import CustomButton from "./common/CustomButton";
+import Title from "./common/Title";
 import "./FileUpload.scss";
 
 const FileUpload = () => {
     const {setUploadedImage} = useContext(Context);
     const [dropAreaHovered, setDropAreaHovered] = useState(false);
+
+    const fileInputRef = useRef(null);
 
     const handleHover = event => {
         event.preventDefault();
@@ -43,33 +47,31 @@ const FileUpload = () => {
     };
 
     return (
-        <form className="file-upload" id="upload" action="#" method="get">
-            <fieldset className="file-upload-fieldset">
-                <div>
-                    <label htmlFor="fileselect" className="file-upload-input-label">
-                        Upload file:
-                    </label>
-                    <input
-                        className="file-upload-input"
-                        type="file"
-                        id="fileselect"
-                        name="fileselect[]"
-                        // multiple="multiple"
-                        onChange={handleFileSelect}
-                    />
-                </div>
-
+        <>
+            <Title text="Upload an image to convert to ASCII" center></Title>
+            <form className="file-upload" id="upload" action="#" method="get">
                 <div
                     className={`file-upload-drop-area${dropAreaHovered ? " hovered" : ""}`}
                     onDrop={handleFileSelect}
                     onDragOver={handleHover}
                     onDragLeave={handleHover}
-                    // onMouseLeave={handleHover}
                 >
-                    ...or drag and drop file here
+                    drag and drop an image here
                 </div>
-            </fieldset>
-        </form>
+                <div>
+                    <CustomButton onClick={() => fileInputRef.current.click()}>
+                        Browse Files
+                    </CustomButton>
+                    <input
+                        ref={fileInputRef}
+                        className="file-upload-input"
+                        type="file"
+                        onChange={handleFileSelect}
+                        style={{display: "none"}}
+                    />
+                </div>
+            </form>
+        </>
     );
 };
 

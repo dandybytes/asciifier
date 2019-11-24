@@ -1,34 +1,39 @@
-.file-upload {
-    &-fieldset {
-        padding: 0.5em 1em;
-        border: 2px solid #999;
-        border-radius: 6px;
-    }
+@import "../variables.scss";
 
-    label {
-        clear: both;
-        float: left;
-        width: 40%;
-        text-align: right;
-        margin: 0 2% 10px 0;
-        color: #666;
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-input {
+        text-align: center;
     }
 
     &-drop-area {
-        clear: both;
-        font-weight: bold;
+        width: 80vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        border: 2px dashed var(--lightColor);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 400;
         text-align: center;
-        padding: 30px;
-        margin: 10px;
-        background-color: #ddd;
-        border: 3px dashed #333;
-        border-radius: 5px;
+        background-color: transparent;
+        @media (min-width: $breakMedium) {
+            width: 50vw;
+            margin: 3rem;
+            font-size: 1.3rem;
+        }
 
         &.hovered {
-            color: #f00;
-            border-color: #f00;
+            color: var(--accentColor);
+            border-color: var(--accentColor);
             border-style: solid;
-            box-shadow: inset 0 3px 4px #888;
+            box-shadow: inset 0 0 0.5rem 0.5rem var(--accentColorOverlay-3);
         }
     }
 }
