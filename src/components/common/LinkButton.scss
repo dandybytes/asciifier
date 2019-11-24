@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 
 .link-button {
-    // max-width: 15rem;
     margin: 1.5rem auto;
     justify-self: center;
     padding: 0.5rem 1rem;
@@ -12,9 +11,9 @@
     text-align: center;
     // letter-spacing: 0.2rem;
     word-spacing: 0.2rem;
-    outline-offset: 4px;
-    outline-width: 2px;
-    outline-style: solid;
+    // outline-offset: 4px;
+    // outline-width: 2px;
+    // outline-style: solid;
     border: none;
     transition: 0.2s all ease-in-out;
     @media only screen and (min-width: $breakMedium) {
@@ -22,37 +21,38 @@
     }
 
     &.regular {
-        outline-color: $lightColor;
-        background-color: $lightColor;
+        // outline-color: $mainColor;
+        background-color: $mainColor;
         color: $darkColor;
 
         &:hover,
         &:active {
-            outline-color: $accentColor;
-            background-color: $accentColor;
-            color: $lightColor;
+            // outline-color: $lightColor;
+            background-color: $lightColor;
+            color: $darkColor;
+            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
         }
 
         &:active {
-            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
             outline: none;
         }
     }
 
     &.inverted {
-        outline-color: $darkColor;
+        // outline-color: $darkColor;
         background-color: $darkColor;
-        color: $lightColor;
+        color: $mainColor;
 
         &:hover,
         &:active {
-            outline-color: $accentColor;
-            background-color: $accentColor;
-            color: $lightColor;
+            // outline-color: $lightColor;
+            background-color: $lightColor;
+            color: $mainColor;
         }
 
         &:active {
-            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
             outline: none;
         }
     }
