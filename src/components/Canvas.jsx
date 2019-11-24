@@ -34,7 +34,7 @@ const Canvas = () => {
             const grayscalePixelList = mapImageDataToGrayscale(imageData);
             setGrayscalePixelMap(grayscalePixelList);
         }
-    }, [uploadedImage]);
+    }, [uploadedImage, fontRatio, maxSide, setOutputWidth, setOutputHeight, setGrayscalePixelMap]);
 
     // the canvas is required only for image processing => display=none
     return <canvas ref={canvasRef} className="canvas" style={{display: "none"}}></canvas>;

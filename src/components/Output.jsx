@@ -1,25 +1,12 @@
-import React, {useContext, useState, useRef, useEffect} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {Context} from "../context/Context";
-// import PropTypes from "prop-types";
-// import "./Output.scss";
 import {generateAsciiContent, mapPixelToCharacter} from "../utils/utils";
+import "./Output.scss";
 
 const Output = () => {
-    // set the initial content of the output element to one character
-    // to assess the height-to-width ratio of the currently used font
-    let [content, setContent] = useState(" ");
+    let [content, setContent] = useState("");
 
-    const {outputWidth, setFontRatio, asciiCharPalette, grayscalePixelMap} = useContext(Context);
-
-    const outputRef = useRef(null);
-
-    useEffect(() => {
-        if (content === " ") {
-            // get the height & width of the benchmark inline element to compute font size ratio
-            const {width, height} = outputRef.current.getBoundingClientRect();
-            setFontRatio(height / width);
-        }
-    }, []);
+    const {outputWidth, asciiCharPalette, grayscalePixelMap} = useContext(Context);
 
     useEffect(() => {
         if (grayscalePixelMap.length > 0) {
@@ -27,24 +14,12 @@ const Output = () => {
                 mapPixelToCharacter(pixel, asciiCharPalette)
             );
             setContent(generateAsciiContent(asciiCharMap, outputWidth));
+        } else {
+            setContent("");
         }
-    }, [grayscalePixelMap]);
+    }, [grayscalePixelMap, asciiCharPalette, outputWidth]);
 
-    return (
-        <pre
-            ref={outputRef}
-            style={{display: `${content === " " ? "inline" : "block"}`}}
-            className="output"
-        >
-            {content}
-        </pre>
-    );
+    return <pre className="output">{content}</pre>;
 };
-
-// Output.propTypes = {
-//     uploadedImage: PropTypes.element.isRequired
-// };
-
-// Output.defaultProps = {};
 
 export default Output;
