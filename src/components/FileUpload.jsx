@@ -59,7 +59,12 @@ const FileUpload = () => {
                     drag and drop an image here
                 </div>
                 <div>
-                    <CustomButton onClick={() => fileInputRef.current.click()}>
+                    <CustomButton
+                        onClick={event => {
+                            event.preventDefault();
+                            fileInputRef.current.click();
+                        }}
+                    >
                         Browse Files
                     </CustomButton>
                     <input
