@@ -26,18 +26,18 @@ export const mapImageDataToGrayscale = imageData => {
 // capping height & width to make the output fit on the screen & within reasonable sizes
 export const getCappedDimensions = (width, height, fontRatio, maxDimension) => {
     // unlike pixels, the ASCII characters aren't square: height > width
-    const ratioAdjustedWidth = Math.floor(fontRatio * width);
-    let outputHeight = height;
-    let outputWidth = ratioAdjustedWidth;
+    const ratioAdjustedHeight = Math.floor(height / fontRatio);
+    let outputHeight = ratioAdjustedHeight;
+    let outputWidth = width;
 
-    if (height > maxDimension) {
+    if (ratioAdjustedHeight > width && ratioAdjustedHeight > maxDimension) {
         outputHeight = maxDimension;
-        outputWidth = Math.floor((ratioAdjustedWidth * maxDimension) / height);
+        outputWidth = Math.floor((width * maxDimension) / ratioAdjustedHeight);
     }
 
-    if (width > maxDimension) {
-        outputWidth = Math.floor(maxDimension * fontRatio);
-        outputHeight = Math.floor((height * maxDimension) / width);
+    if (width > ratioAdjustedHeight && width > maxDimension) {
+        outputWidth = maxDimension;
+        outputHeight = Math.floor((ratioAdjustedHeight * maxDimension) / width);
     }
 
     return [outputWidth, outputHeight];
