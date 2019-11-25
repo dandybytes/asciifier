@@ -27,7 +27,7 @@ const Output = () => {
             if (outputWidth > outputHeight * fontRatio) {
                 setFontSize((1.5 * window.innerWidth) / outputWidth);
             } else {
-                setFontSize(window.innerHeight / (outputHeight * fontRatio));
+                setFontSize((1.1 * window.innerHeight) / (outputHeight * fontRatio));
             }
         }
     }, [outputWidth, outputHeight]);
