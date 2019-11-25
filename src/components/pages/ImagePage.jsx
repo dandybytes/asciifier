@@ -16,22 +16,23 @@ const ImagePage = () => {
             <Menu />
             <Benchmark />
             <main>
+                <Canvas />
+                <Output />
                 {uploadedImage === null ? (
                     <FileUpload />
                 ) : (
                     <>
                         <CustomButton
-                            onClick={() => {
+                            onClick={event => {
+                                event.preventDefault();
                                 setUploadedImage(null);
                                 setGrayscalePixelMap("");
                             }}
                         >
-                            Upload new Image
+                            Upload Another Image
                         </CustomButton>
                     </>
                 )}
-                <Canvas />
-                <Output />
             </main>
         </div>
     );

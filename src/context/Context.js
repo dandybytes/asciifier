@@ -9,9 +9,10 @@ const ContextProvider = props => {
     let [fontRatio, setFontRatio] = useState(null);
     let [grayscalePixelMap, setGrayscalePixelMap] = useState("");
 
-    const maxSide = 100;
-    const asciiCharPalette =
-        "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+    const maxSide = 150;
+    const asciiCharPalette = " .:oO8@";
+    // const asciiCharPalette =
+    //     " .'`^\",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
 
     return (
         <Context.Provider
