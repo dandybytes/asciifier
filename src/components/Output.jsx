@@ -5,8 +5,11 @@ import "./Output.scss";
 
 const Output = () => {
     let [content, setContent] = useState("");
+    let [fontSize, setFontSize] = useState(10);
 
-    const {outputWidth, asciiCharPalette, grayscalePixelMap} = useContext(Context);
+    const {outputWidth, outputHeight, fontRatio, asciiCharPalette, grayscalePixelMap} = useContext(
+        Context
+    );
 
     useEffect(() => {
         if (grayscalePixelMap.length > 0) {
@@ -19,7 +22,23 @@ const Output = () => {
         }
     }, [grayscalePixelMap, asciiCharPalette, outputWidth]);
 
-    return <pre className="output">{content}</pre>;
+    useEffect(() => {
+        if (outputWidth > 0 && outputHeight > 0) {
+            if (outputWidth > outputHeight * fontRatio) {
+                setFontSize((1.5 * window.innerWidth) / outputWidth);
+            } else {
+                setFontSize(window.innerHeight / (outputHeight * fontRatio));
+            }
+        }
+    }, [outputWidth, outputHeight]);
+
+    return (
+        <div className="output">
+            <pre className="output-content" style={{fontSize: `${fontSize}px`}}>
+                {content}
+            </pre>
+        </div>
+    );
 };
 
 export default Output;

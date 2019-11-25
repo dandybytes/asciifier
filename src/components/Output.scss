@@ -1,4 +1,15 @@
 .output {
-    // width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
     color: var(--lightColor);
+
+    &-content {
+        max-width: 90vw;
+        max-height: 80vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
 }
