@@ -9,7 +9,7 @@ const NotFoundPage = () => {
         <div className="notfound-page">
             <Title text="We couldn't find the page you're looking for." center></Title>
             <LinkButton destination="/">
-                <GoBackIcon size={15} fill="white" />
+                <GoBackIcon size={15} fill={"var(--darkColor)"} />
                 <span>Home Page</span>
             </LinkButton>
         </div>
