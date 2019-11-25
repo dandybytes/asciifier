@@ -27,15 +27,20 @@
         color: $darkColor;
 
         &:hover,
-        &:active {
+        &:focus {
             // outline-color: $lightColor;
-            background-color: $lightColor;
+            background-color: $accentColor;
             color: $darkColor;
-            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
+            // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
+            outline: none;
         }
 
         &:active {
-            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
+            // outline-offset: 4px;
+            // outline-width: 2px;
+            // outline-style: solid;
+            // outline-color: $accentColor;
             outline: none;
         }
     }
@@ -46,14 +51,16 @@
         color: $mainColor;
 
         &:hover,
-        &:active {
+        &:focus {
             // outline-color: $lightColor;
             background-color: $lightColor;
+            // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
             color: $mainColor;
+            outline: none;
         }
 
         &:active {
-            box-shadow: 0 0 0.5rem 0.5rem $lightColorOverlay-2;
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
             outline: none;
         }
     }

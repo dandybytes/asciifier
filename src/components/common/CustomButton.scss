@@ -24,15 +24,17 @@
     }
 
     &:hover,
+    &:focus,
     &:active {
         background-color: $accentColorOverlay-1;
-        // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+        // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
         color: $lightColor;
         font-weight: 400;
+        outline: none;
     }
 
     &:active {
-        box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+        box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
         outline: none;
     }
 
@@ -42,16 +44,17 @@
         color: $darkColor;
 
         &:hover,
-        &:active {
+        &:focus {
             border: none;
             background-color: $accentColorOverlay-1;
-            // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            // box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
             color: $lightColor;
             font-weight: 400;
+            outline: none;
         }
 
         &:active {
-            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-2;
+            box-shadow: 0 0 0.5rem 0.5rem $accentColorOverlay-3;
             outline: none;
         }
     }

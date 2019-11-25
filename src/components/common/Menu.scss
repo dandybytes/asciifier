@@ -14,6 +14,16 @@
         width: 4vmin;
     }
 
+    &:hover .menu-btn {
+        border: 0.2vmin solid var(--accentColor);
+    }
+
+    &:hover .menu-icon,
+    &:hover .menu-icon::before,
+    &:hover .menu-icon::after {
+        background-color: var(--accentColor);
+    }
+
     &-btn {
         z-index: 1002;
         height: 100%;
@@ -24,14 +34,6 @@
         border: 0.2vmin solid var(--mainColor);
         background-color: transparent;
         box-shadow: 0 1.5vmin 4.5vmin rgba(0, 0, 0, 0.1);
-
-        &:hover .menu-icon::before {
-            transform: translateY(-1vmin);
-        }
-
-        &:hover .menu-icon::after {
-            transform: translateY(1vmin);
-        }
     }
 
     &-icon {
@@ -46,7 +48,7 @@
             height: 0.3vmin;
             background-color: var(--mainColor);
             @media only screen and (min-width: $breakMedium) {
-                height: 0.2vmin;
+                height: 0.15vmin;
             }
         }
 
@@ -62,14 +64,14 @@
         &::before {
             transform: translateY(-1.2vmin);
             @media only screen and (min-width: $breakMedium) {
-                transform: translateY(-0.8vmin);
+                transform: translateY(-0.7vmin);
             }
         }
 
         &::after {
             transform: translateY(1.2vmin);
             @media only screen and (min-width: $breakMedium) {
-                transform: translateY(0.8vmin);
+                transform: translateY(0.7vmin);
             }
         }
     }
@@ -78,12 +80,6 @@
         z-index: 1000;
         position: fixed;
         border-radius: 50%;
-        // background-image: radial-gradient(
-        //     circle at center right,
-        //     #0e788e 0%,
-        //     #033750 70%,
-        //     transparent 100%
-        // );
         background-color: var(--darkColor);
         opacity: 0;
         transition: all 0.8s ease-in-out;
@@ -128,7 +124,7 @@
         height: 100%;
         width: 100%;
         padding: 1vmin 3vmin;
-        color: white;
+        color: var(--lightColor);
         text-decoration: none;
         text-transform: uppercase;
         font-weight: 300;

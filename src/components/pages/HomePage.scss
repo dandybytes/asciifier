@@ -89,23 +89,21 @@
             margin: 0;
             padding: 0.2rem 0.5rem;
             font-weight: 700;
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             word-spacing: 0;
             @media only screen and (min-width: $breakMedium) {
                 width: 35vmin;
                 padding: 0.5rem 1rem;
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 font-weight: 700;
                 word-spacing: 0.2rem;
             }
 
             .icon {
-                height: 1rem;
-                width: 1rem;
-                @media only screen and (min-width: $breakMedium) {
-                    height: 1.5rem;
-                    width: 1.5rem;
-                }
+                height: 1.5rem;
+                width: 1.5rem;
+                padding: 0;
+                margin: 0;
             }
         }
 
