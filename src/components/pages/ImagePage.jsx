@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 import {Context} from "../../context/Context";
-import Menu from "../common/Menu";
 import FileUpload from "../FileUpload";
 import Canvas from "../Canvas";
 import Output from "../Output";
@@ -13,7 +12,6 @@ const ImagePage = () => {
 
     return (
         <div className="image-page">
-            <Menu />
             <Benchmark />
             <main>
                 <Canvas />
