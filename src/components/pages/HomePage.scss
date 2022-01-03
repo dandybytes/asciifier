@@ -58,7 +58,6 @@
         .home-page-demo-rgb {
             position: relative;
             grid-area: rgb;
-            background: url("/assets/img/example-rgb.jpg");
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -66,7 +65,6 @@
 
         .home-page-demo-ascii {
             grid-area: ascii;
-            background: url("/assets/img/example-ascii.png");
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
