@@ -9,7 +9,7 @@ import App from "./App";
 
 ReactDOM.render(
     <ContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <App />
         </BrowserRouter>
     </ContextProvider>,
