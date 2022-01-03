@@ -1,14 +1,10 @@
-# ASCIIfier
+# 📸 ASCIIfier
 
 ASCIIfier can convert uploaded RGB photos to ASCII images. It can also "ASCII-fy" live web camera videos. ASCIIfier was created with [React.js](http://facebook.github.io/react/index.html) using React hooks and React context.
 
 ![](https://github.com/dandybytes/asciifier/blob/master/docs/asciifier.png)
 
-## Live Demo
-
-[ASCIIfier](https://dandyasciifier.netlify.com/)
-
-## Tech Tools
+## 👾 Technology
 
 |                                   tool                                   | description                                 |
 | :----------------------------------------------------------------------: | ------------------------------------------- |
@@ -17,7 +13,32 @@ ASCIIfier can convert uploaded RGB photos to ASCII images. It can also "ASCII-fy
 |                       [Babel](https://babeljs.io/)                       | ECMAScript transpiler                       |
 |                    [Webpack](https://webpack.js.org/)                    | task management and module bundling toolkit |
 
-## Features:
+## 🔐 Prerequisites
+
+- node
+- npm
+- yarn (optional)
+
+## 🛠 Installation
+
+```bash
+# Clone this repository
+$ git clone https://github.com/dandybytes/asciifier.git
+
+# Navigate into the repository
+$ cd asciifier
+
+# Install the required dependencies
+$ yarn || npm i
+
+# Start the local development server
+$ yarn start || npm start
+```
+
+## 🚀 Production:
+Before production deployment, create a `.env.production.local` file and fill out the required variables following the example in `.env.production.local.sample`.
+
+## 🎓 Features:
 
 -   converts user-uploaded photos to ASCII images
 -   converts web camera live videos to ASCII
