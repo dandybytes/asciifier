@@ -32,7 +32,7 @@
     "description": "React application that converts images to ASCII.",
     "main": "index.js",
     "devDependencies": {
-        "node-sass": "^4.13.0"
+        "node-sass": "^7.0.0"
     },
     "license": "ISC"
 }
